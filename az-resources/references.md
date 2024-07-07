@@ -53,6 +53,23 @@
     *   variables: Define reusable values within the template to improve readability and maintainability.
         
     *   outputs: Define values returned after deployment, useful for referencing in other resources or scripts.
+
+*   Template format
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "",
+  "contentVersion": "",
+  "apiProfile": "",
+  "definitions": { },
+  "parameters": { },
+  "variables": { },
+  "functions": [ ],
+  "resources": [ ], /* or "resources": { } with languageVersion 2.0 */
+  "outputs": { }
+}
+```
         
 
 **Deployment:**
@@ -70,11 +87,26 @@
 **Deploy a resource group by template**
 *   An example to deploy a new storage via deployment template. 
 
-`   az deployment group create --name "addfunction" --template-file azurestoragedeploy.json --parameters azurestoragedeploy.parameters.json`
+`   az deployment group create --confirm-with-what-if --name "addfunction" --template-file azurestoragedeploy.json --parameters azurestoragedeploy.parameters.json --mode Complete`
 
-*   To delete deployment template. Note that the including resources in template are not deleted when deleting the deployment.
+*   To delete deployment template.
 
 `   az deployment group delete --name "addfunction"`
 
-Reference: https://learn.microsoft.com/en-US/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create
+*   Azure Resource Manager supports two deployment modes: incremental and complete.
+*   When you run the command in complete mode, whatever resources you have will be removed if they're not defined in the template file.
+*   The default deployment mode is incremental. In this mode, Resource Manager doesn't delete anything
 
+*   Control the format of what-if results
+
+The `az deployment group what-if` command gives you a preview of what will happen if you carry out a deployment.
+
+You can control the amount of text output of the what-if operation by using one of these result formats:
+
+*   FullResourcePayloads. By including this parameter, you get a _verbose_ output that consists of a list of resources that will change. The output also shows details about all the properties that will change in accordance with the template.
+    
+*   ResourceIdOnly. This mode returns a list of resources that will change, but not all the details.
+
+To preview changes before deploying a template, use the \--confirm-with-what-if argument with the deployment command. If the changes are as you expected, acknowledge that you want the deployment to finish.
+
+Reference: https://learn.microsoft.com/en-US/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create

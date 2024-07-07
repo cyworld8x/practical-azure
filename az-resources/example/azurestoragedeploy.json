@@ -61,5 +61,10 @@
             }
         }
     ],
-    "outputs": {}
+    "outputs": {
+        "storageAccountName": {
+            "type": "string",
+            "value": "[toLower(concat(parameters('storagePrefix'), uniqueString(resourceGroup().id)))]"
+        }
+    }
 }

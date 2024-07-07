@@ -6,7 +6,7 @@
             "value": "mstorage"
         },
         "storageSku": {
-            "value": "Standard_GRS"
+            "value": "Standard_LRS"
         },
         "storageTier": {
             "value": "Standard"
