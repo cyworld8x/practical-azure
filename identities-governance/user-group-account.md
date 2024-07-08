@@ -211,3 +211,44 @@ References: https://learn.microsoft.com/en-us/cli/azure/ad/group?view=azure-cli-
     ![Alt text for the image](./images/entra-connect.png "Optional title text")
 
 *   Microsoft has a full [Installation guide](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-install-roadmap) to help you prepare, install, configure and test your AD Connect setup.
+
+**Conditional Access in Microsoft Entra ID**
+------------------------------------------
+
+1.  **What is Conditional Access?**
+    
+    *   Conditional Access is a policy-based approach that allows you to control access to your organization’s resources based on specific conditions.
+        
+    *   It helps enhance security by ensuring that only authorized users with compliant devices can access sensitive data.
+
+![Alt text for the image](./images/conditional-access.png "Optional title text")
+        
+2.  **Setting Up Conditional Access**:
+    
+    *   Log in to the Microsoft Entra admin center.
+        
+    *   Navigate to **Security** > **Conditional Access**.
+        
+    *   Create a new policy or modify an existing one.
+        
+    *   Define conditions such as user groups, applications, and locations.
+        
+    *   Specify access controls like multi-factor authentication (MFA), device compliance, or risk-based policies.
+        
+3.  **Common Scenarios**:
+    
+    *   **Require MFA**: Enforce MFA for specific applications or user groups.
+        
+    *   **Device Compliance**: Allow access only from compliant devices (e.g., Intune-managed devices).
+        
+    *   **Location-Based Policies**: Restrict access based on IP address or geographic location.
+        
+    *   **Risk-Based Policies**: Evaluate user risk and adjust access accordingly.
+        
+4.  **Monitoring and Troubleshooting**:
+    
+    *   Regularly review sign-in logs and audit events.
+        
+    *   Use Azure Monitor and Azure AD Identity Protection for insights.
+        
+    *   Troubleshoot issues related to conditional access policies.
