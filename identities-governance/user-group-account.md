@@ -252,3 +252,8 @@ References: https://learn.microsoft.com/en-us/cli/azure/ad/group?view=azure-cli-
     *   Use Azure Monitor and Azure AD Identity Protection for insights.
         
     *   Troubleshoot issues related to conditional access policies.
+
+**Self-Service Password Reset (SSPR) vs Microsoft Entra multifactor authentication**
+------------------------------------------------------------------------------------
+
+![Alt text for the image](./images/sspr-mfa.png "Optional title text")
