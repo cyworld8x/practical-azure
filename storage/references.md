@@ -50,11 +50,11 @@
         
     *   Set the access level (recommended: **Private**).
         
-*   [Containers are essential for organizing and managing blob data](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
+*   Containers are essential for organizing and managing blob data [0](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
     
 **File Shares (Azure Files)**:
 
-*   File shares provide **SMB-based file storage** in Azure.
+*   File shares provide **SMB-based file storage** and **the Network File System (NFS) protocol.** in Azure.
     
 *   You can create file shares within a **FileStorage account** (dedicated to Azure file shares only).
     
@@ -62,7 +62,7 @@
     
 *   Useful for sharing files across VMs or applications.
     
-*   [No other storage resources (like blobs, queues, or tables) can be deployed in a FileStorage account](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[2](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share).
+*   No other storage resources (like blobs, queues, or tables) can be deployed in a FileStorage account[0](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[2](https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share).
     
 **Queues**:
 
@@ -74,7 +74,7 @@
     
 *   Queues support **FIFO (first-in, first-out)** message processing.
     
-*   [Messages are stored in a queue until processed by a consumer](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
+*  [Messages are stored in a queue until processed by a consumer [0](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
     
 **Tables**:
 
@@ -86,7 +86,7 @@
     
 *   Tables support partitioning, indexing, and querying by primary key.
     
-*   [Not suitable for complex relational data; best for simple key-value pairs](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
+*   Not suitable for complex relational data; best for simple key-value pairs [0](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal)[1](https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal).
 AzCopy**:
     
 *   **Purpose**: AzCopy is a command-line tool for scripted and programmatic data transfer.
@@ -105,7 +105,7 @@ AzCopy**:
         
     *   Ideal for moving files quickly.
         
-*   [**Performance**: Offers optimal performance for data movement](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-transfer)[1](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-transfer)[2](https://github.com/Azure/azure-storage-azcopy).
+*   **Performance**: Offers optimal performance for data movement [0](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-transfer)[1](https://learn.microsoft.com/en-us/azure/architecture/data-guide/scenarios/data-transfer)[2](https://github.com/Azure/azure-storage-azcopy).
         
 **Azure Data Disk**:
     
@@ -127,4 +127,113 @@ AzCopy**:
         
 *   **Supported Disk Types**:
     
-    *   [Standard HDD, Standard SSD, Premium SSD, Ultra SSD, and Performance Plus (preview)](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)[3](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types).
+    *   Standard HDD, Standard SSD, Premium SSD, Ultra SSD, and Performance Plus (preview) [*](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)[3](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types).
+
+**Azure File Sync**:
+
+**Purpose**:
+
+*   Azure File Sync replicates files from your **on-premises Windows Server** to an **Azure file share**.
+    
+*   It centralizes your file services in Azure while maintaining local access to your data [1](https://azure.microsoft.com/en-us/updates/azure-file-sync/)[1](https://azure.microsoft.com/en-us/updates/azure-file-sync/).
+    
+**Deployment Options**:
+
+*   **Direct Mount of an Azure File Share**:
+    
+    *   You can directly mount Azure file shares on-premises or in the cloud using standard SMB clients (available on Windows, macOS, and Linux).
+        
+    *   No need to manage a separate file server or NAS device.
+        
+*   **Cache Azure File Share On-Premises with Azure File Sync**:
+    
+    *   Transforms an on-premises (or cloud) Windows Server into a quick cache of your Azure file share.
+        
+    *   Provides flexibility, performance, and compatibility of an on-premises file server [2](https://learn.microsoft.com/en-us/azure/storage/file-sync/file-sync-planning)[2](https://learn.microsoft.com/en-us/azure/storage/file-sync/file-sync-planning).
+        
+**Management Concepts**:
+
+*   **Azure File Share**:
+    
+    *   Serverless cloud file share in Azure.
+        
+    *   Accessed directly with SMB or FileREST protocol.
+        
+    *   Primarily accessed through the Windows Server cache when used with Azure File Sync.
+        
+*   **Server Endpoint**:
+    
+    *   Path on the Windows Server being synced to an Azure file share.
+        
+    *   Can be a specific folder or the root of a volume.
+        
+*   **Sync Group**:
+    
+    *   Defines the sync relationship between a cloud endpoint (Azure file share) and a server endpoint.
+        
+    *   Keeps endpoints within a sync group in sync with each other [3](https://learn.microsoft.com/en-us/azure/storage/file-sync/file-sync-planning)
+
+**Azure Storage redundancy** :
+------------------------------
+
+1.  **Locally Redundant Storage (LRS)**:
+    
+    *   **Replication**: Copies your data synchronously **three times within a single physical location** in the primary region [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[1](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+        
+    *   **Durability**: Provides at least **99.999999999% (11 nines)** durability of objects over a given year.
+        
+    *   **Advantages**: LRS is the **lowest-cost** redundancy option but isn’t recommended for applications requiring high availability or durability.
+        
+    *   **Use Cases**: Protects your data against server rack and drive failures [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[1](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+        
+2.  **Zone-Redundant Storage (ZRS)**:
+    
+    *   **Replication**: Copies your data synchronously across **three Azure availability zones** in the primary region [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[1](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+        
+    *   **Advantages**:
+        
+        *   Higher availability than LRS.
+            
+        *   Recommended for applications requiring high availability.
+            
+    *   **Use Cases**: Ideal for scenarios where data resilience across zones is critical [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[1](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[2](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-redundancy).
+        
+3.  **Geo-Redundant Storage (GRS)**:
+    
+    *   **Replication**: Copies your data **synchronously** to a **secondary region** hundreds of miles away from the primary region.
+        
+    *   **Advantages**:
+        
+        *   Provides **additional protection** against regional disasters.
+            
+        *   Ensures data availability even if the primary region fails.
+            
+    *   **Use Cases**: Critical applications requiring strong disaster recovery capabilities [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)[1](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+4.  **Read-Access Geo-Redundant Storage (RA-GRS)**:
+    
+    *   **Replication**: Similar to GRS, but with **read access** to the secondary region.
+        
+    *   **Advantages**:
+        
+        *   Allows read access to replicated data in the secondary region.
+            
+        *   Useful for scenarios where you need to retrieve data during a primary region outage.
+            
+    *   **Use Cases**: Applications requiring both disaster recovery and read access to data.
+        
+5.  **Geo-Zone-Redundant Storage (GZRS)**:
+    
+    *   **Replication**: Combines ZRS and GRS.
+        
+    *   **Advantages**:
+        
+        *   Data is replicated across **availability zones** in the primary region (like ZRS).
+            
+        *   Additionally, a **read-only copy** is stored in a secondary region (like GRS).
+            
+    *   **Use Cases**: Balances high availability and disaster recovery needs [Refer](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+
+* Table of data copies
+
+![Alt text for the image](./images/datacopies_table.png "Optional title text")
