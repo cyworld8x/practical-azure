@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dnszones_goaz_site_name": {
+            "value": null
+        },
+        "virtualMachines_WebVM_name": {
+            "value": null
+        },
+        "virtualNetworks_WebVNet_name": {
+            "value": null
+        },
+        "virtualMachines_PrivateVM_name": {
+            "value": null
+        },
+        "publicIPAddresses_WebVM_ip_name": {
+            "value": null
+        },
+        "virtualNetworks_PrivateVNet_name": {
+            "value": null
+        },
+        "networkInterfaces_webvm399_z1_name": {
+            "value": null
+        },
+        "publicIPAddresses_PrivateVM_ip_name": {
+            "value": null
+        },
+        "networkSecurityGroups_az_cph_nsg_name": {
+            "value": null
+        },
+        "networkInterfaces_privatevm301_z1_name": {
+            "value": null
+        },
+        "privateDnsZones_private_goaz_site_name": {
+            "value": null
+        },
+        "networkSecurityGroups_PrivateVM_nsg_name": {
+            "value": null
+        },
+        "applicationSecurityGroups_az_cph_asg_name": {
+            "value": null
+        }
+    }
+}
