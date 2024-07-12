@@ -5,40 +5,37 @@
         "dnszones_goaz_site_name": {
             "value": null
         },
-        "virtualMachines_WebVM_name": {
+        "virtualMachines_PVM_name": {
             "value": null
         },
-        "virtualNetworks_WebVNet_name": {
+        "virtualMachines_WVM_name": {
             "value": null
         },
-        "virtualMachines_PrivateVM_name": {
+        "virtualNetworks_VMVnet_name": {
             "value": null
         },
-        "publicIPAddresses_WebVM_ip_name": {
+        "privateDnsZones_goaz_com_name": {
             "value": null
         },
-        "virtualNetworks_PrivateVNet_name": {
+        "publicIPAddresses_PVM_ip_name": {
             "value": null
         },
-        "networkInterfaces_webvm399_z1_name": {
+        "publicIPAddresses_WVM_ip_name": {
             "value": null
         },
-        "publicIPAddresses_PrivateVM_ip_name": {
+        "networkInterfaces_pvm86_z1_name": {
             "value": null
         },
-        "networkSecurityGroups_az_cph_nsg_name": {
+        "networkInterfaces_wvm162_z1_name": {
             "value": null
         },
-        "networkInterfaces_privatevm301_z1_name": {
+        "networkSecurityGroups_az_nsg_name": {
             "value": null
         },
-        "privateDnsZones_private_goaz_site_name": {
+        "networkSecurityGroups_PVM_nsg_name": {
             "value": null
         },
-        "networkSecurityGroups_PrivateVM_nsg_name": {
-            "value": null
-        },
-        "applicationSecurityGroups_az_cph_asg_name": {
+        "applicationSecurityGroups_az_asg_name": {
             "value": null
         }
     }
